@@ -136,16 +136,16 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-# if os.getcwd() == '/app':
-#     import dj_database_url
-#     db_from_env = dj_database_url.config(conn_max_age=500)
-#     DATABASES['default'].update(db_from_env)
-#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+if os.getcwd() == '/app':
+    # import dj_database_url
+    # db_from_env = dj_database_url.config(conn_max_age=500)
+    # DATABASES['default'].update(db_from_env)
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-#     ALLOWED_HOSTS = ['d-bug.herokuapp.com']
-#     DEBUG = True
+    ALLOWED_HOSTS = ['d-bug.herokuapp.com']
+    DEBUG = True
 
-#     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    # BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
 django_heroku.settings(locals())
