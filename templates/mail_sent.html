@@ -2,20 +2,20 @@
 
 <div
   style="
-    margin-left: 7em;
+    margin-left: 10em;
     margin-right: 7em;
     margin-top: 5em;
     font-family: 'Quicksand', sans-serif;
   "
 >
-	<h1>Congratulations!</h1>
-	<p>Your Review Request has been sent to <span style="color: #335eea"> {{ username }}</span></p>
+	<h1 style="font-size: 60px;">Congratulations!</h1>
+	<p style="font-size: 20px;">Your Review Request has been sent to <span style="color: #335eea"> {{ username }}</span></p>
 	<br><br>
 
-	<h3>Details: </h3><br>
-		<p><strong>Code:</strong></p>
+	<h3 style="font-size: 30px;">Details: </h3><br>
+		<p style="font-size: 20px;"><strong>Code:</strong></p>
 		<pre class="prettyprint">	{{ codeInput|safe|linebreaks }}</pre>
 		<br>
-	<p style="margin-bottom: 40px;"><strong>Comments:</strong><br> {{ commentInput }} </p>
+	<p style="margin-bottom: 40px; font-size: 20px;"><strong>Comments:</strong><br> {{ commentInput }} </p>
 </div> 
 {% endblock %}

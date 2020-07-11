@@ -15,15 +15,17 @@
     margin-top: 5em;
     font-family: 'Quicksand', sans-serif;
   ">
-  <h1>Let's dbug!</h1>
+  <h1>Let's dbug!</h1><br>
   <h4>Reviewing Request from <span style="color: #335eea"> {{ rf }}</span></h4>
   <p>request id <strong>{{ rid }}</strong></p>
   <br>
 
-  <p><strong>Code:</strong></p>
+  <p style="font-size: 20px;"><strong>Code to be reviewed:</strong></p>
   <pre class="prettyprint">	{{ cs|safe|linebreaks }}</pre>
   <br>
-  <p><strong>Comments for the reviewer:</strong></p> {{ comment }}
+  <p style="font-size: 20px;"><strong>Comments for the reviewer:</strong></p> {{ comment }} <br><br>
+  <p style="font-size: 30px;"><strong>d.bug Online Code Editor </strong></p><br>
+
   <form action="/review_submitted/" method="POST">
     {% csrf_token %}
     <textarea class="review_text codemirror-textarea" id="code" name="code" rows="6" cols="60" placeholder="Type text..." autofocus>{{cs}}</textarea>
@@ -31,13 +33,13 @@
     <input type="hidden" name="rev_id" id="rev_id" value="{{ rid }}">
     <input type="hidden" name="comments" id="comments" value="{{ comment }}">
     <br>
-    <p><strong>Add a review...</strong></p>
+    <p style="font-size: 20px;"><strong>Add a review...</strong></p>
     <!-- <input type="text" id="review_submitted" name="review_submitted" placeholder="Add Reviews..."> -->
 
     <textarea class="review_text" id="review_text" name="review_text" rows="6" cols="60"
       placeholder="Type text..."></textarea>
     <!-- reviewer name passed through views.py -->
-    <button style="margin-left: 40%; margin-top: 40px; margin-bottom: 40px;" class="btn btn-primary"
+    <button style="margin-left: 70%; margin-bottom: 6em; margin-top: -100px; z-index: 10;" class="btn btn-primary btn-lg"
       type='submit'>Submit Review?</button>
   </form>
 </div>

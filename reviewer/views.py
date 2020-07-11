@@ -15,7 +15,6 @@ def welcome_view(request, *args, **keywordargs):
 def home_view(request, *args, **keywordargs):
     return render(request, 'home.html', {})
 
-
 # def pending_view(request, *args, **keywordargs):
 #     return render(request, 'pending.html', {})
 def pending_view(request, *args, **keywordargs):
@@ -93,12 +92,15 @@ def contact_view(request, *args, **keywordargs):
     return render(request, 'contact.html', {})
 
 
-def send_review_request_mail(code, email_id, username, comment):
+def send_review_request_mail(code, email_id, username_to_req, username_from_req, comment, time):
     to_send = EmailMessage()
 
-    msg = "Hi " + str(username) + "!\n\n" + \
-        "This automated message was sent to you because you have a new review request!\n\n" + \
-        "Details -\nCode: " + str(code) + "\nComments: \n" + str(comment) + "\n\n" + \
+    msg = "Hi " + str(username_to_req) + \
+        "!\n\n" + \
+        "This automated message was sent to you because you have a new review request from " + str(username_from_req) + \
+        "\n\nDetails -\n" + "\nRequest sent at: "+ str(time.split(" ")[1]) + \
+        " UTC\nDate: " + str(time.split(" ")[0]) + \
+        "\nComments for the reviewer: \n" + str(comment) + "\n\n" + \
         "Have a nice day!\nTeam d.bug"
 
     to_send.set_content(msg)
@@ -113,12 +115,14 @@ def send_review_request_mail(code, email_id, username, comment):
     s.send_message(to_send)
 
 
-def send_review_done_mail(code, email_id, username_req_from, username_req_to, rev_id):
+def send_review_done_mail(email_id, username_req_from, username_req_to, rev_id, time):
     to_send = EmailMessage()
 
     msg = "Hi " + str(username_req_from) + "!\n\n" + \
         "This automated message was sent to you because your code has been reviewed by " + username_req_to + "!\n\n" + \
-        "Details -\nCode: " + str(code) + "\nReview ID: " + rev_id + "\n\n" + \
+        "Details -\n" + "\nReviewed at: "+ str(time.split(" ")[1]) + \
+        " UTC\nDate: " + str(time.split(" ")[0]) + \
+        "\nReview ID: " + rev_id + "\n\n" + \
         "Have a nice day!\nTeam d.bug"
 
     to_send.set_content(msg)
@@ -135,8 +139,12 @@ def send_review_done_mail(code, email_id, username_req_from, username_req_to, re
 
 def send_request(request):
     context = {}
+    username_curr = request.user.username
     username = request.POST.get('reviewerInput')
     email_id = ""
+
+    from datetime import datetime
+    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     # get email_id of reviewer
     for i in User.objects.raw('SELECT * FROM auth_user WHERE username = %s', [username]):
@@ -157,7 +165,9 @@ def send_request(request):
             data['codeInput'],
             data['email_id'],
             data['username'],
-            data['commentInput']
+            username_curr,
+            data['commentInput'],
+            str(time)
         )
 
     # add new request to pending db
@@ -194,13 +204,16 @@ def review_submitted(request):
             'review_submitted': request.POST.get('review_text')
         }
 
+        from datetime import datetime
+        time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
     # send notification (code reviewed)
         send_review_done_mail(
-            context['code'],
             context['email_id_req_from'],
             context['req_from'],
             context['req_to'],
-            context['rev_id'])
+            context['rev_id'],
+            time)
 
     # remove entry from pending db
     # x = Pending_Requests(
