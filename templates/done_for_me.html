@@ -14,15 +14,17 @@
   {% for code,req_from,comment, id, review, rev_by in data %}
 
   <div style="margin-bottom: 2em;">
-    <button type="button" class="collapsible btn btn-dark">reviewed by 
+    <button type="button" class="collapsible btn btn-dark" style="font-size: 20px;">reviewed by 
       <strong> {{ rev_by }} </strong><br> request id <strong>{{ id }}</strong></button>
     
     <div class="content">
       <pre class="prettyprint">
         {{ code|safe|linebreaks }}
       </pre>
-      Comments: <br> {{ comment }} <hr>
-      Reviews: <br> {{ review }}
+      <strong style="font-size: 18px;">Comments:</strong> 
+      <br><br> {{ comment }} <hr>
+      <strong style="font-size: 18px;">Reviews:</strong> 
+      <br><br> {{ review }} <br><br>
     </div>
   </div>
   {% endfor %}

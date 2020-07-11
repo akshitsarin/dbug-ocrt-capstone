@@ -3,13 +3,18 @@
 {% block title %}Create an account{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container" style="margin-top: 5em;">
-    <h1 class="display-4" style="margin-bottom: 1em;">You are about to join the finest dev community</h1>
-    <form method="POST" class="form-group">
+<div class="container" style="margin-top: 4em; font-family: 'Quicksand', sans-serif;">
+
+    <h1 style="font-size: 80px;">
+        <strong>sign-up</strong>
+    </h1><br><br>
+    
+    <h1 style="margin-bottom: 1em; margin-top: -0.3em;">You are about to join the finest dev community <br>in the world</h1>
+    <form method="POST" class="form-group" style="font-size: 22px;">
         {% csrf_token %}
 
         {{form|crispy}}
-        <button type="submit" class="btn btn-success">Register</button>
+        <button type="submit" class="btn btn-primary btn-lg">register</button>
     </form>
 </div>
 {% endblock %}
