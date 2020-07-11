@@ -1,5 +1,48 @@
 {% extends "base.html" %} {% block content %}
 
+<style>
+  .bmc-button img {
+    height: 34px !important;
+    width: 35px !important;
+    margin-bottom: 1px !important;
+    box-shadow: none !important;
+    border: none !important;
+    vertical-align: middle !important;
+  }
+
+  .bmc-button {
+    padding: 7px 15px 7px 10px !important;
+    line-height: 35px !important;
+    height: 51px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    color: #ffffff !important;
+    background-color: #007BFF !important;
+    border-radius: 5px !important;
+    border: 1px solid transparent !important;
+    padding: 7px 15px 7px 10px !important;
+    font-size: 20px !important;
+    letter-spacing: -0.08px !important;
+    box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+    -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+    /* margin: 0 auto !important; */
+    font-family: 'Quicksand', sans-serif !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+  }
+
+  .bmc-button:hover,
+  .bmc-button:active,
+  .bmc-button:focus {
+    -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+    text-decoration: none !important;
+    box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+    opacity: 0.85 !important;
+    color: #ffffff !important;
+  }
+</style>
+
+
 <div style="
     margin-left: 7em;
     margin-right: 7em;
@@ -18,13 +61,27 @@
       <strong> {{ rev_by }} </strong><br> request id <strong>{{ id }}</strong></button>
     
     <div class="content">
-      <pre class="prettyprint">
+      <pre class="prettyprint" style="font-size: 18px;">
         {{ code|safe|linebreaks }}
       </pre>
       <strong style="font-size: 18px;">Comments:</strong> 
       <br><br> {{ comment }} <hr>
       <strong style="font-size: 18px;">Reviews:</strong> 
-      <br><br> {{ review }} <br><br>
+      <br><br> {{ review }} 
+
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/akshitsarin" style="position: absolute; right: 10em; margin-top: -1.6em;">
+        
+      <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-credit-card" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+        <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+      </svg>
+
+      <span style="margin-left:10px;font-size:20px !important;">
+      Tip the reviewer!</span></a>
+      
+      <br><br>
     </div>
   </div>
   {% endfor %}
