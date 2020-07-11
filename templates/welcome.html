@@ -1,9 +1,11 @@
 {% extends "base.html" %} {% block content %}
 
 <h1 style="
-		margin-left: 5em; 
-		margin-top: 100px; 
-		font-family: 'Quicksand', sans-serif;">
+		margin-left: 2.8em; 
+		margin-top: 90px; 
+		font-family: 'Quicksand', sans-serif;
+		font-size: 70px;
+		z-index: 100;">
 	welcome to <span style="color: #335eea"><strong>d.bug</strong></span>
 </h1>
 
@@ -17,17 +19,19 @@
 <button class="btn btn-primary btn-lg" style="margin-left: 12em; margin-top: 0em;"><a href="login/" style="text-decoration: none; color: white;" >Login</a></button>
 
 <button class="btn btn-light btn-lg" style="margin-left: 0.6em; margin-top: 0em; margin-right: 6em;"><a href="register/" style="text-decoration: none">
-		<span>	Sign Up	</span>
-	</a></button>
-	
+	<span>	Sign Up	</span>
+</a></button>
+
 {% endif %}
-<img src="static/git_coder.png" height="600" width="600">
+<img src="static/git_coder.png" height="580" width="580" style="margin-top: 0em; z-index: -100;">
 <!-- <button class="btn btn-primary" style="" >Sign-In -></button> -->
+<div class="container">
 
 <table class="table table-borderless" 
 	style="
-		margin-left: 12em; 
-		/* margin-right: 14em; */
+		/* margin-left: 12em;  */
+		margin-right: 40em;
+		margin-top: -1em;
 		table-layout: fixed;
 		width: 80em;
 		font-family: 'Quicksand', sans-serif;">
@@ -91,7 +95,7 @@
 		</tr>
 	</tbody>
 </table>
-
+</div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
