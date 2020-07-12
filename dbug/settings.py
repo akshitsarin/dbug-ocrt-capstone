@@ -143,7 +143,7 @@ if os.getcwd() == '/app':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     ALLOWED_HOSTS = ['d-bug.herokuapp.com']
-    DEBUG = True
+    DEBUG = False
 
     # BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
