@@ -52,6 +52,7 @@
 
   <h1 style="padding-bottom: 2em;">Already reviewed for <span style=" color: #335eea;">{{ user.get_username }}
   </span></h1>
+  <p style="font-size: 20px; margin-top: -3em; margin-bottom: 4em;">All your requests that have been reviewed will appear here</p>
 
   {% if data|length > 0 %}
   {% for code,req_from,comment, id, review, rev_by in data %}

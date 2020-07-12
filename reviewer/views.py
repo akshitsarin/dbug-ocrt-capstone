@@ -244,6 +244,9 @@ def sent_pending_view(request):
 
     req_from = [e.req_from for e in Pending_Requests.objects.all()
                 if e.req_from == user]
+    
+    req_to = [e.req_to for e in Pending_Requests.objects.all()
+                if e.req_from == user]
 
     req_id = [e.id for e in Pending_Requests.objects.all()
               if e.req_from == user]
@@ -251,7 +254,7 @@ def sent_pending_view(request):
     comments = [e.comments for e in Pending_Requests.objects.all()
                 if e.req_from == user]
 
-    data = zip(code_snippets, req_from, comments, req_id)
+    data = zip(code_snippets, req_from, req_to, comments, req_id)
 
     context = {"data": tuple(data)}
     return render(request, 'pending_sent.html', context)

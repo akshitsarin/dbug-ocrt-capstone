@@ -9,19 +9,21 @@
   
   <h1 style="padding-bottom: 2em;">Pending Reviews for <span style=" color: #335eea;">{{ user.get_username }}
   </span></h1>
+  <p style="font-size: 20px; margin-top: -3em; margin-bottom: 4em;">The requests with <span style=" color: #335eea;"> {{ user.get_username }} </span> assigned as the reviewer will appear here</p>
 
   {% if data|length > 0 %}
   {% for code,req_from,comment, id in data %}
 
   <div style="margin-bottom: 2em;">
-    <button type=" button" class="collapsible btn btn-dark">request from
+    <button type=" button" class="collapsible btn btn-dark" style="font-size: 20px;">
+      request from
       <strong> {{ req_from }} </strong><br> request id <strong>{{ id }}</strong> </button>
     <div class="content">
-      <pre class="prettyprint">
+      <pre class="prettyprint" style="font-size: 18px;">
             {{ code|safe|linebreaks }}
           </pre>
-      Comments: <br>
-      {{ comment }}
+      <strong style="font-size: 18px;">Comments:</strong>
+      <br><br> {{ comment }}
       <hr>
       <form action="review/" method="POST">
         {% csrf_token %}
@@ -29,7 +31,7 @@
         <input type="hidden" name="code_snippet" value="{{ code }}" />
         <input type="hidden" name="req_from" value="{{ req_from }}" />
         <input type="hidden" name="comment" value="{{ comment }}" />
-        <button type="submit" class='btn btn-primary' style="margin-bottom: 20px;">review now</button>
+        <button type="submit" class='btn btn-primary btn-lg' style="margin-bottom: 20px;">review now</button>
       </form>
     </div>
   </div>
