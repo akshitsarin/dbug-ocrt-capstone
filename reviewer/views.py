@@ -15,34 +15,29 @@ def welcome_view(request, *args, **keywordargs):
 def home_view(request, *args, **keywordargs):
     return render(request, 'home.html', {})
 
-# def pending_view(request, *args, **keywordargs):
-#     return render(request, 'pending.html', {})
 def pending_view(request, *args, **keywordargs):
     user = request.user.username
     code_snippet = [e.code for e in Pending_Requests.objects.all()
                     if e.req_to == user]
 
-    # cs = ''.join(code_snippet)
     req_from = [e.req_from for e in Pending_Requests.objects.all()
                 if e.req_to == user]
-    # rf = ''.join(req_from)
+
     req_id = [e.id for e in Pending_Requests.objects.all()
               if e.req_to == user]
 
     comments = [e.comments for e in Pending_Requests.objects.all()
                 if e.req_to == user]
     data = zip(code_snippet, req_from, comments, req_id)
-    # context = {"cs": code_snippet, "rf": req_from,
-    #            "comments": comments, "id": req_id, "data": data}
+
     context = {"data": tuple(data)}
     return render(request, 'pending.html', context)
 
 
 def request_new_view(request, *args, **keywordargs):
     username_list = [e.username for e in User.objects.all()]
-    context = {
-        "username_list": username_list
-    }
+    context = { "username_list": username_list}
+
     return render(request, 'review_request.html', context)
 
 
@@ -111,7 +106,7 @@ def send_review_request_mail(code, email_id, username_to_req, username_from_req,
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login("reviewalert.dbug@gmail.com", "CAPstonepelter@123")
+    s.login("email", "password")
     s.send_message(to_send)
 
 
@@ -133,7 +128,7 @@ def send_review_done_mail(email_id, username_req_from, username_req_to, rev_id, 
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login("reviewalert.dbug@gmail.com", "CAPstonepelter@123")
+    s.login("email_id", "password")
     s.send_message(to_send)
 
 
@@ -215,12 +210,7 @@ def review_submitted(request):
             context['rev_id'],
             time)
 
-    # remove entry from pending db
-    # x = Pending_Requests(
-    #     code = context['code'],
-    #     req_from = context['req_from'],
-    #     req_to = context['req_to'],
-    #     comments = context['comments'])
+    # remove entry from db
     x = Pending_Requests.objects.get(
         req_from=context['req_from'], comments=context['comments'])
     x.delete()
@@ -283,4 +273,4 @@ def done_for_me_view(request):
     data = zip(code_snippets, req_from, comments, req_id, reviews, reviewed_by)
 
     context = {"data": tuple(data)}
-    return render(request, 'done_for_me.html', context)
+    return render(request, 'done_for_me.html', context) 
