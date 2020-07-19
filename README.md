@@ -18,4 +18,4 @@ To run the Django application on localhost, the dependencies can be found in `re
 
 This project was completed as part of the Capstone Project at 
 NIIT University by **[Akshit Sarin](https://github.com/akshitsarin)** and **[Aaryamann Sharma](https://github.com/Aaryamann171)**. <br>
-*Scaling issues might appear on different devices, set zoom to `80%` for best experience.* <br>
+> *Scaling issues might appear on different devices, set zoom to `80%` for best experience.* <br>
