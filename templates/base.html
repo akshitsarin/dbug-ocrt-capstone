@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!-- <meta name="theme-color" content="#335EEA" />  <!-- url bar mobile color -->
+
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
   <meta name="viewport" content="width=1024">
   <title>d.bug - online code review tool</title>
@@ -11,18 +13,65 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
   <link rel="icon" type="image/png" href="static/favicon.png" />
-<link rel="icon" type="image/png" href="../static/favicon.png" />
+  <link rel="icon" type="image/png" href="../static/favicon.png" />
   <style>
+    html {
+      overflow-y: scroll;
+    }
+
     body {
-      /* overflow-x: hidden; */
       width: 100%;
+    }
+
+    nav a h5:hover{
+      color: #424242 !important;
+    }
+
+    #githubBtn{
+      display: inline-flex;
+      position: absolute;
+      align-items: center; 
+      width: 2.2em;
+      height: 2.2em;
+      right: 16px;
+      top: 16px;
+      font-family: 'Quicksand', sans-serif;
+      background-color: rgb(80, 80, 80);
+      border-radius: 26% !important;
+    }
+
+    #githubBtn:hover{
+      background-color: rgb(50, 50, 50);
+    }
+
+    #logoutLink{
+      text-decoration: none;
+      margin-top: -0.5em;
+      
+    }
+
+    #logout{
+      background-color: #335EEA;
+      display: inline-flex; 
+      align-items: center;
+      color: white;
+      font-size: 0.6em;
+    }
+
+    #logout:hover{
+      background-color: #2448be;
+    }
+
+    .btn:focus{
+      box-shadow: none !important;
+      outline: none !important;
     }
 
     .navbar {
       font-family: 'Quicksand', sans-serif;
       margin-top: 0.6em;
       border: none;
-      width: 90%;
+      width: 100%;
       overflow-x: hidden;
     }
 
@@ -31,16 +80,24 @@
       color: black;
     }
 
+    .navbar-brand{
+      margin-top: -10px;
+
+    }
+    .navbar-default .navbar-brand:hover{
+      color: #335EEA;
+    }
+
     .navbar-default {
       font-weight: 700;
       font-size: 2em;
-      letter-spacing: 2px;
+      letter-spacing: 1.4px;
     }
 
     .navbar-brand {
       font-weight: 700;
       font-size: 1.2em;
-      letter-spacing: 3px;
+      letter-spacing: 2.6px;
     }
 
     h5 {
@@ -71,6 +128,22 @@
       overflow: hidden;
       background-color: #f1f1f1;
     }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #c0c0c0;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #666666;
+    }
+    
   </style>
 </head>
 
@@ -78,8 +151,11 @@
   <div class="container">
     <nav class="navbar navbar-default">
       <div class="navbar-header">
-        <a class="navbar-brand" style="font-weight: 1000;" href="/"><strong>d.bug</strong></a>
+        <a class="navbar-brand" style="font-weight: 1000;" href="/">
+          <strong>d.bug</strong>
+        </a>
       </div>
+
       {% if user.is_authenticated %}
       <a href="/home" style="text-decoration: none;">
         <h5>home</h5>
@@ -95,38 +171,58 @@
         <h5>contact us</h5>
       </a>
       {% if user.is_authenticated %}
-      <button class="btn btn-primary" style="display: inline-flex;
-    align-items: center; margin-top: -0.5em;">
-        <a href="/logout/" style="text-decoration: none; color: white; font-size: 20px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-left"
-              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+
+
+        <a href="/logout/" id="logoutLink">
+          <button class="btn" id="logout">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" 
+          style="margin-right: 0.2em;"
+              fill="white" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.354 11.354a.5.5 0 0 0 0-.708L1.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z" />
               <path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5z" />
               <path fill-rule="evenodd"
                 d="M14 13.5a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 14 2.5H7A1.5 1.5 0 0 0 5.5 4v1.5a.5.5 0 0 0 1 0V4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-1.5a.5.5 0 0 0-1 0V12A1.5 1.5 0 0 0 7 13.5h7z" />
-            </svg> logout </a></button>
+            </svg> logout</button></a>
+            
       {% endif %}
+      
     </nav>
-  </div>
-  {% block content %} {% endblock %}
+    
+    <a href="https://github.com/akshitsarin/dbug-ocrt-capstone" 
+      id="githubLink" 
+      target="_blank">
+      <button class="btn" id="githubBtn">
 
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script>
-      var coll = document.getElementsByClassName("collapsible");
-      var i;
+        <img src="https://d-bug.s3.ap-south-1.amazonaws.com/github-logo.png" 
+        width="250%" height="auto" 
+        style="
+          margin-left: -76%
+        ">
+      </button>
+    </a>
 
-      for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-            content.style.display = "none";
-          } else {
-            content.style.display = "block";
-          }
-        });
-      }
-    </script>
+    </div>
+    {% block content %} {% endblock %}
+    
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+
 </body>
 
 </html>
