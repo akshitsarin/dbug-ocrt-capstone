@@ -1,5 +1,5 @@
 # dbug-ocrt-capstone
-![d.bug features](d.bug-banner.png)<br>
+![d.bug features](https://d-bug.s3.ap-south-1.amazonaws.com/d-bug.png)<br>
 
 **d.bug** is an online code review platform where users can request
 other users to review their code and provide useful feedback/changes.
@@ -16,5 +16,5 @@ To run the Django application on localhost, the dependencies can be found in `re
 
 ---
 
-This project was completed as part of the Capstone Project at 
+> This project was completed as part of the Capstone Project at 
 NIIT University by **[Akshit Sarin](https://github.com/akshitsarin)** and **[Aaryamann Sharma](https://github.com/Aaryamann171)**. <br>
