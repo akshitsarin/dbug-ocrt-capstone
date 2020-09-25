@@ -1,15 +1,22 @@
 {% extends "base.html" %} {% block content %}
 
-<div style="
-    margin-left: 7em;
-    margin-right: 7em;
+<div class="container" style="
     margin-top: 5em;
-    font-family: 'Quicksand', sans-serif;
-  ">
+    font-family: 'Quicksand', sans-serif;">
 
-  <h1 style="padding-bottom: 2em;">Already reviewed by <span style=" color: #335eea;">{{ user.get_username }}
-  </span></h1>
-  <p style="font-size: 20px; margin-top: -3em; margin-bottom: 4em;">All previous requests reviewed by <span style=" color: #335eea;"> {{ user.get_username }} </span> will appear here</p>
+  <h1 style="padding-bottom: 1em;">
+    Already reviewed by 
+    <span style=" color: #335eea;">
+      {{ user.get_username }}
+  </span>
+</h1>
+
+  <p style="font-size: 22px; margin-bottom: 2em;">
+    All previous requests reviewed by 
+    <span style=" color: #335eea;"> 
+      {{ user.get_username }} 
+    </span> will appear here
+  </p>
 
   {% if data|length > 0 %}
   {% for code,req_from,comment, id, review in data %}
@@ -24,11 +31,14 @@
         {{ code|safe|linebreaks }}
       </pre>
 
-      <strong style="font-size: 18px;">Comments:</strong>
+      <strong style="font-size: 20px;">Comments:</strong>
       <br><br> {{ comment }}
       <hr>
-      <strong style="font-size: 18px;">Reviews:</strong>
-      <br><br> {{ review }}
+      <strong style="font-size: 20px;">Reviews:</strong>
+      <br><br> 
+      <p style="font-size: 18px;">
+        {{ review }}
+      </p>
 
       <br><br>
     </div>
