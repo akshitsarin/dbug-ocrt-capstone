@@ -1,8 +1,21 @@
 {% extends "base.html" %} {% block content %}
 <style type="text/css">
+  .names{
+    font-size: 1.4em;
+    margin-top: 0.6em;
+    text-align:center;
+  }
+
+  .team-images{
+    margin-left: 11%;
+    width: 80%;
+    border-radius: 2em;
+  }
+
 </style>
 <div class="container" style="
    margin-top: 4em;
+   margin-bottom: 1em;
    font-family: 'Quicksand', sans-serif;
    ">
 
@@ -10,61 +23,45 @@
     <strong>the team</strong>
   </h1><br><br>
 
-  <table style="text-align: center; ">
-    <tr style="margin-left: 0em;">
-      <td>
-        <div class="w3-card-4" style="width:80%">
-          <a href="https://www.linkedin.com/in/akshit-sarin/" target="_blank">
-            <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/akshit-sarin.png" style="width:100%; border-radius: 30px">
-          </a>
-          <div class="w3-container w3-center"
-            style="background-color: white; width: 80%; border-radius: 40px; margin-top: 1.4em; margin-left: 1.2em;">
-            <p style="color: black; font-size: 22px">akshit sarin</p>
-          </div>
-        </div>
-      </td>
-      <td style="text-align: center;">
-        <div class="w3-card-4" style="width:80%">
-          <a href="https://www.linkedin.com/in/aaryamann-sharma/" target="_blank">
-            <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/aaryamann.png" alt="aaryamannsharma" style="width:100%; border-radius: 30px">
-          </a>
-          <div class="w3-container w3-center"
-            style="background-color: white; width: 80%; border-radius: 40px; margin-left: 1.4em;margin-top: 1.4em">
-            <p style="color: black; font-size: 22px">aaryamann<br>sharma</p>
-          </div>
-        </div>
-      </td>
-      <td style="text-align: center;">
-        <div class="w3-card-4" style="width:80%">
-          <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/vaibhav.png" alt="vaibhav"
-            style="width:100%; border-radius: 30px">
-          <div class="w3-container w3-center"
-            style="background-color: white; width: 80%; border-radius: 40px; margin-left: 1.4em;margin-top: 1.4em">
-            <p style="color: black; font-size: 22px">vaibhav<br>srivastava</p>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">
-        <div class="w3-card-4" style="width:80%">
-          <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/bajawat.png" alt="adityavikram" style="width:100%; border-radius: 30px">
-          <div class="w3-container w3-center"
-            style="background-color: white; width: 80%; border-radius: 40px; margin-left: 2em;margin-top: 1.4em">
-            <p style="color: black; font-size: 22px">adityavikram<br>rajawat</p>
-          </div>
-        </div>
-      </td>
-      <td style="text-align: center;">
-        <div class="w3-card-4" style="width:80%">
-          <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/arnav.png" alt="arnavgoel" style="width:100%; border-radius: 30px">
-          <div class="w3-container w3-center"
-            style="background-color: white; width: 80%; border-radius: 40px; margin-left: 2em;margin-top: 1.4em">
-            <p style="color: black; font-size: 22px">arnav goel</p>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div class="row">
+    <div class="col-4">
+      <a href="https://www.linkedin.com/in/akshit-sarin/" target="_blank">
+        <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/akshit-sarin.png"
+          class="team-images" >
+      </a>
+      <p class="names"> akshit sarin </p>
+    </div>
+
+    <div class="col-4">
+      <a href="https://www.linkedin.com/in/aaryamann-sharma/" target="_blank">
+        <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/aaryamann.png"
+          class="team-images">
+      </a>
+      <p class="names"> aaryamann sharma </p>
+    </div>
+
+    <div class="col-4">
+      <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/vaibhav.png" 
+        class="team-images">
+      <p class="names"> vaibhav srivastava </p>
+    </div>
+  </div>
+
+  <div class="row" style="width: 100%; margin-top: 1.6em;">
+    <div class="col-2"></div>
+
+    <div class="col-4">
+      <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/bajawat.png"
+        class="team-images">
+      <p class="names"> adityavikram rajawat </p>
+    </div>
+  
+    <div class="col-4">
+      <img src="https://team-page-images.s3.ap-south-1.amazonaws.com/arnav.png"
+        class="team-images">
+      <p class="names"> arnav goel </p>
+    </div>
+  </div>
+
 </div>
 {% endblock %}
