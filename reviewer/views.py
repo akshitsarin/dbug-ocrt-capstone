@@ -7,6 +7,10 @@ from .models import Done_Requests
 import smtplib
 from email.message import EmailMessage
 
+review_request_mail_msg = "Hi {0}!\n\nThis automated message was sent to you because you have a new review request from {1}\n\nDetails -\n\nRequest sent at: {2} UTC\nDate: {3}\nComments for the reviewer: \n{4}\n\nHave a nice day!\nTeam d.bug"
+
+
+
 
 def welcome_view(request, *args, **keywordargs):
     return render(request, 'welcome.html', {})
@@ -90,13 +94,7 @@ def contact_view(request, *args, **keywordargs):
 def send_review_request_mail(code, email_id, username_to_req, username_from_req, comment, time):
     to_send = EmailMessage()
 
-    msg = "Hi " + str(username_to_req) + \
-        "!\n\n" + \
-        "This automated message was sent to you because you have a new review request from " + str(username_from_req) + \
-        "\n\nDetails -\n" + "\nRequest sent at: "+ str(time.split(" ")[1]) + \
-        " UTC\nDate: " + str(time.split(" ")[0]) + \
-        "\nComments for the reviewer: \n" + str(comment) + "\n\n" + \
-        "Have a nice day!\nTeam d.bug"
+    msg = review_request_mail_msg.format(str(username_to_req), str(username_from_req), str(time.split(" ")[1]), str(time.split(" ")[0]), str(comment))
 
     to_send.set_content(msg)
 
