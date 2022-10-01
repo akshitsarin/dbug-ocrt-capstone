@@ -7,9 +7,9 @@
     font-family: 'Quicksand', sans-serif;
   ">
 {% if user.is_authenticated %}
-  <h1 style="padding-bottom: 2em;">Pending Reviews for <span style=" color: #335eea;">{{ user.get_username }}
+  <h1 style="padding-bottom: 2em;">pending reviews for <span style=" color: #335eea;">{{ user.get_username }}
   </span></h1>
-  <p style="font-size: 20px; margin-top: -3em; margin-bottom: 4em;">Requests that you have sent out, but haven't been reviewed yet, will be shown here</p>
+  <p style="font-size: 20px; margin-top: -3em; margin-bottom: 4em;">requests that you have sent out, but haven't been reviewed yet, are shown here</p>
 
   {% if data|length > 0 %}
   {% for code, req_from, req_to, comment, id in data %}
@@ -22,7 +22,7 @@
       <pre class="prettyprint" style="font-size: 18px;">
             {{ code|safe|linebreaks }}
           </pre>
-      <strong style="font-size: 18px;">Comments:</strong>
+      <strong style="font-size: 18px;">comments:</strong>
       <br><br> {{ comment }}
       <hr>
       
@@ -39,7 +39,7 @@
   {% else %}
 
   <div class="jumbotron">
-    <h4 style="font-weight: 100;">You don't have any pending requests at the moment!</h1>
+    <h4 style="font-weight: 100;">you don't have any pending requests at the moment!</h1>
   </div>
 </div>
 {% endif %}
